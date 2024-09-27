@@ -1,25 +1,25 @@
 // Select all images in the gallery
-const images = document.querySelectorAll('.gallery img');
+const galleryImages = document.querySelectorAll('.gallery img');
 const fullscreenModal = document.getElementById('fullscreenModal');
 const fullscreenImage = document.getElementById('fullscreenImage');
 const closeModal = document.getElementById('closeModal');
 
-// Add click event listener to each image
-images.forEach(image => {
+// Add click event to each image
+galleryImages.forEach((image) => {
     image.addEventListener('click', () => {
-        fullscreenImage.src = image.src; // Set the clicked image as the source for fullscreen
+        fullscreenImage.src = image.src; // Set the source of the fullscreen image
         fullscreenModal.style.display = 'flex'; // Show the modal
     });
 });
 
-// Close the modal when the close button is clicked
+// Close the fullscreen modal when clicking the close button
 closeModal.addEventListener('click', () => {
     fullscreenModal.style.display = 'none'; // Hide the modal
 });
 
-// Close the modal when clicking outside the image
+// Close the fullscreen modal when clicking outside of the image
 fullscreenModal.addEventListener('click', (event) => {
-    if (event.target === fullscreenModal) {
+    if (event.target !== fullscreenImage) {
         fullscreenModal.style.display = 'none'; // Hide the modal
     }
 });
