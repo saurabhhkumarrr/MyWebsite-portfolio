@@ -285,3 +285,42 @@ nav ul li a:hover {
         justify-content: center; /* Center the navigation */
     }
 }
+
+
+
+
+
+
+
+
+/* Existing styles for the gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* Show pointer on hover */
+}
+
+/* Larger image size on bigger screens */
+@media (min-width: 1024px) {
+    .gallery img {
+        max-width: 300px; /* Increase max-width for larger screens */
+        height: auto;
+    }
+}
+
+/* For even larger screens */
+@media (min-width: 1440px) {
+    .gallery img {
+        max-width: 400px; /* Further increase for very large screens */
+        height: auto;
+    }
+}
