@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumar's Portfolio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 3rem;
+        }
+
+        h2 {
+            color: #4a90e2;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two images per row */
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        /* Fullscreen styles */
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(1, 1fr); /* Switch to 1 image per row on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            footer {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Kumar's Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#quotes">Quotes Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>About Me</h2>
+        <p>Hello! I'm Kumar, and this is my portfolio where I showcase my projects and quotes. Feel free to explore!</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Project 1</h3>
+            <p>Description of your first project goes here.</p>
+        </div>
+        <div class="project">
+            <h3>Project 2</h3>
+            <p>Description of your second project goes here.</p>
+        </div>
+    </section>
+
+    <section id="quotes">
+        <h2>Quotes Gallery</h2>
+        <div class="gallery">
+            <img src="quote1.jpg" alt="Quote 1">
+            <img src="quote2.jpg" alt="Quote 2">
+            <img src="quote3.jpg" alt="Quote 3">
+            <img src="quote4.jpg" alt="Quote 4">
+            <img src="quote5.jpg" alt="Quote 5">
+            <img src="quote6.jpg" alt="Quote 6">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: kumar@example.com</p>
+        <p>Phone: +91 1234567890</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Kumar's Portfolio</p>
+    </footer>
+
+    <div class="fullscreen" id="fullscreenModal">
+        <span class="close" id="closeModal">&times;</span>
+        <img class="fullscreen-image" id="fullscreenImage" src="" alt="">
+    </div>
+
+    <script>
+        // Select all images in the gallery
+        const images = document.querySelectorAll('.gallery img');
+        const fullscreenModal = document.getElementById('fullscreenModal');
+        const fullscreenImage = document.getElementById('fullscreenImage');
+        const closeModal = document.getElementById('closeModal');
+
+        // Add click event listener to each image
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                fullscreenImage.src = image.src; // Set the clicked image as the source for fullscreen
+                fullscreenModal.style.display = 'flex'; // Show the modal
+            });
+        });
+
+        // Close the modal when the close button is clicked
+        closeModal.addEventListener('click', () => {
+            fullscreenModal.style.display = 'none'; // Hide the modal
+        });
+
+        // Close the modal when clicking outside the image
+        fullscreenModal.addEventListener('click', (event) => {
+            if (event.target === fullscreenModal) {
+                fullscreenModal.style.display = 'none'; // Hide the modal
+            }
+        });
+    </script>
+</body>
+</html>
